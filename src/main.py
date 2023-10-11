@@ -91,5 +91,20 @@ def main():
     # display the sum of the balances in a1 and a2
     print("$%.2f" % account.sum(a1, a3))
 
+    # display the sum of the balances in a1 and s1
+    print("$%.2f" % account.sum(a1, s1))
+
+    # transfer $25 out of a1 annd put it into a new account called a4
+    a4 = account.transfer(a1, 25.0)
+    # a4 = account.transfer(a1, -25.0) this line of code results in a ValueError
+    # a4 = account.transfer(a1, 2500.0) this line of code results in a ValueError
+    # a4 = account.transfer(a3, 25.0) this line of code results in a ValueError
+    # a4 = account.transfer(s1, 25.0)
+
+    # display the balances in a1 and a4
+    print("Balance in a1 $%.2f" % (a1.getBalance()))
+    print("Balance in a4 $%.2f" % (a4.getBalance()))
+
+
 if __name__ == "__main__":
     main()
