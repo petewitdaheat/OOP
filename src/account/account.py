@@ -1,7 +1,20 @@
 from transaction.transaction import *
 
 class account(transaction):
+    """The Account class includes methods to manage the balance
+    of a bank account.
+
+    Args:
+        transaction (transacction): abstract class that 
+        defines methods that may be implemented by an account class.
+    """    
     def __init__(self, *args):
+        """Constructs an account with a specified balance if args length
+        is 1, else constructs an account with a balance of 0.
+
+        Raises:
+            ValueError: indicates args[0] is less than 0.
+        """        
         #print(args)
         if (len(args) == 1):
             try:
@@ -30,12 +43,31 @@ class account(transaction):
         """
 
     def getBalance(self):
+        """Returns the balance of the calling account.
+
+        Returns:
+            float: the balance.
+        """        
         return self.__balance
     
     def isEmpty(self):
+        """Checks if the balance for the calling account is zero.
+
+        Returns:
+            Boolean: True if the balance for the calling account is zero,
+            else False.
+        """        
         return self.__balance == 0
     
     def credit(self, amount: float):
+        """Increases the balance of the calling account by the specified amount.
+
+        Args:
+            amount (float): the amount to increase the balance by
+
+        Raises:
+            ValueError: indicates the specified amount is less than zero.
+        """        
         try:
             if (amount < 0.0):
                 raise ValueError("Credit amount is less than zero.")
@@ -45,6 +77,16 @@ class account(transaction):
             self.__balance += amount
 
     def debit(self, amount: float):
+        """Decreases the balance of the calling account by the specified amount.
+
+        Args:
+            amount (float): the amount to decrease the balance by.
+
+        Raises:
+            ValueError: indicates the specified amount is less than 0
+            ValueError: indicates the specified amount is greater than the 
+            balance of the calling account
+        """        
         try:
             if (amount < 0.0):
                 raise ValueError("Debit amount is less than zero.")
